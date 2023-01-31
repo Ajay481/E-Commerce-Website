@@ -17,7 +17,7 @@ export const Header = () => {
       <div className="mt-5">
         <Navbar className="text-white bg-secondary" expand="md">
           <Container className="justify-content-center">
-            <p className="display-1">The Generics</p>
+            <p className="font-weight-bold display-1">The Generics</p>
           </Container>
         </Navbar>
       </div>

@@ -1,8 +1,19 @@
-import { useState } from "react";
-import { Button, Offcanvas, Table } from "react-bootstrap";
+import { useState, useContext, useEffect } from "react";
+import { Badge, Button, Offcanvas, Table } from "react-bootstrap";
+import { CartContext } from "../../store/cart-context";
 
 export const Cart = () => {
+  const cartCtx = useContext(CartContext);
+
+  console.log(cartCtx.cartItem);
   const [show, setShow] = useState(false);
+  const [cartQuantity, setCartQuantity] = useState(0);
+
+  const itemBadge = cartCtx.cartItem.length;
+
+  useEffect(() => {
+    setCartQuantity(itemBadge);
+  }, [itemBadge]);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -14,6 +25,7 @@ export const Cart = () => {
         onClick={handleShow}
       >
         cart
+        <Badge bg="info">{cartQuantity}</Badge>
       </Button>
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
@@ -28,42 +40,23 @@ export const Cart = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%201.png"
-                  alt="Colors"
-                  style={{ width: "50px" }}
-                />
-                Colors
-              </td>
-              <td>100</td>
-              <td>2<Button variant="danger">REMOVE</Button></td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%202.png"
-                  alt="Black and White Colors"
-                  style={{ width: "50px" }}
-                />
-                Black and White Colors
-              </td>
-              <td>50</td>
-              <td>3<Button variant="danger">REMOVE</Button></td>
-            </tr>
-            <tr>
-              <td>
-                <img
-                  src="https://prasadyash2411.github.io/ecom-website/img/Album%203.png"
-                  alt="Yellow and Black Colors"
-                  style={{ width: "50px" }}
-                />
-                Yellow and Black Colors
-              </td>
-              <td>70</td>
-              <td>1<Button variant="danger">REMOVE</Button></td>
-            </tr>
+            {cartCtx.cartItem.map((item) => (
+              <tr key={item.title}>
+                <td>
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    style={{ width: "50px" }}
+                  />
+                  {item.title}
+                </td>
+                <td>{item.price}</td>
+                <td>
+                  {item.quantity}
+                  <Button variant="danger">REMOVE</Button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </Offcanvas>
