@@ -8,9 +8,19 @@ export const Header = () => {
       <div className="fixed-top">
         <Navbar bg="dark" expand="md" variant="dark">
           <Container className="justify-content-center">
-            <Navbar.Brand>HOME</Navbar.Brand>
+            <NavLink
+              to="/home"
+              style={{ textDecoration: "inherit", color: "white" }}
+            >
+              HOME
+            </NavLink>
             <Navbar.Brand className="me-5 ms-5">STORE</Navbar.Brand>
-            <NavLink to="/about" style={{ textDecoration: 'inherit', color : 'white' }}>ABOUT</NavLink>
+            <NavLink
+              to="/about"
+              style={{ textDecoration: "inherit", color: "white" }}
+            >
+              ABOUT
+            </NavLink>
           </Container>
           <Cart />
         </Navbar>
