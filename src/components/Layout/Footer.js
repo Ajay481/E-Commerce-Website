@@ -5,7 +5,7 @@ export const Footer = () => {
     <div>
       <Navbar className="text-white bg-info" expand="md">
         <Container>
-          <p className="display-5">The Generics</p>
+          <h1 className="font-weight-bold">The Generics</h1>
         </Container>
       </Navbar>
     </div>

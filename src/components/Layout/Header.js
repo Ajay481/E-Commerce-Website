@@ -1,5 +1,6 @@
 import { Container, Navbar } from "react-bootstrap";
 import { Cart } from "../Cart/Cart";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -9,7 +10,7 @@ export const Header = () => {
           <Container className="justify-content-center">
             <Navbar.Brand>HOME</Navbar.Brand>
             <Navbar.Brand className="me-5 ms-5">STORE</Navbar.Brand>
-            <Navbar.Brand>ABOUT</Navbar.Brand>
+            <NavLink to="/about" style={{ textDecoration: 'inherit', color : 'white' }}>ABOUT</NavLink>
           </Container>
           <Cart />
         </Navbar>
@@ -17,7 +18,7 @@ export const Header = () => {
       <div className="mt-5">
         <Navbar className="text-white bg-secondary" expand="md">
           <Container className="justify-content-center">
-            <p className="font-weight-bold display-1">The Generics</p>
+            <p className="display-1">The Generics</p>
           </Container>
         </Navbar>
       </div>
