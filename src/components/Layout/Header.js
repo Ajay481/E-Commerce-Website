@@ -14,12 +14,25 @@ export const Header = () => {
             >
               HOME
             </NavLink>
-            <Navbar.Brand className="me-5 ms-5">STORE</Navbar.Brand>
+            <NavLink
+              to="/store"
+              style={{ textDecoration: "inherit", color: "white" }}
+              className="me-5 ms-5"
+            >
+              STORE
+            </NavLink>
             <NavLink
               to="/about"
               style={{ textDecoration: "inherit", color: "white" }}
+              className="me-5"
             >
               ABOUT
+            </NavLink>
+            <NavLink
+              to="/contactus"
+              style={{ textDecoration: "inherit", color: "white" }}
+            >
+              CONTACT US
             </NavLink>
           </Container>
           <Cart />
