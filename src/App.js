@@ -8,6 +8,7 @@ import { About } from "./Pages/About";
 import { Home } from "./Pages/Home";
 import { Store } from "./Pages/Store";
 import { ContactUs } from "./Pages/Contactus";
+import { ProductPage } from "./Pages/Product-Page";
 
 function App() {
   const [cartItem, setCartItem] = useState([]);
@@ -44,6 +45,9 @@ function App() {
           </Route>
           <Route exact path="/contactus">
             <ContactUs onSubmit={submitHandler} />
+          </Route>
+          <Route exact path="/product-page">
+            <ProductPage />
           </Route>
           <Footer />
         </CartContext.Provider>

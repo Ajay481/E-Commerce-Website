@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Container, Card, Button } from "react-bootstrap";
 import { CartContext } from "../../store/cart-context";
+import { NavLink } from "react-router-dom";
 
 export default function CardComponent(props) {
   const cartCtx = useContext(CartContext);
@@ -31,7 +32,9 @@ export default function CardComponent(props) {
     <Container className="mt-5">
       <Card style={{ width: "300px" }}>
         <Card.Title>{props.title}</Card.Title>
-        <Card.Img variant="top" src={props.src} />
+        <NavLink to="/product-page">
+          <Card.Img variant="top" src={props.src} />
+        </NavLink>
         <Card.Body className="d-block">
           <p>Price: {props.price}</p>
           <Button
