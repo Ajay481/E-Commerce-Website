@@ -40,7 +40,6 @@ export const Login = () => {
       })
       .then((data) => {
         cartCtx.login(data.idToken);
-        console.log(data);
         history.replace("/store");
       })
       .catch((err) => {

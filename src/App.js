@@ -19,6 +19,7 @@ function App() {
 
   const loginHandler = (token) => {
     setToken(token);
+    localStorage.setItem("token",token)
   };
 
   const contextValue = {
