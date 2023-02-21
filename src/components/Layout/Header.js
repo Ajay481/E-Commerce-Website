@@ -29,6 +29,13 @@ export const Header = () => {
               ABOUT
             </NavLink>
             <NavLink
+              to="/login"
+              style={{ textDecoration: "inherit", color: "white" }}
+              className="me-5"
+            >
+              LOGIN
+            </NavLink>
+            <NavLink
               to="/contactus"
               style={{ textDecoration: "inherit", color: "white" }}
             >
