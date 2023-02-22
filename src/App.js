@@ -1,5 +1,5 @@
 import { AvailableCart } from "./components/Cart/AvailableCart";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Header } from "./components/Layout/Header";
 import { Footer } from "./components/Layout/Footer";
 import { AuthContext, CartContext } from "./store/cart-context";
@@ -19,7 +19,7 @@ function App() {
 
   const loginHandler = (token) => {
     setToken(token);
-    localStorage.setItem("token",token)
+    localStorage.setItem("token", token);
   };
 
   const contextValue = {
@@ -68,6 +68,9 @@ function App() {
             </Route>
             <Route exact path="/product-page">
               <ProductPage />
+            </Route>
+            <Route path="*">
+              <Redirect to="/login" />
             </Route>
             <Footer />
           </CartContext.Provider>
