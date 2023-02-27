@@ -14,11 +14,13 @@ import { Login } from "./Pages/Login";
 function App() {
   const [cartItem, setCartItem] = useState([]);
   const [token, setToken] = useState(false);
+  const [email, setEmail] = useState("");
 
   const userIsLoggedIn = !!token;
 
-  const loginHandler = (token) => {
+  const loginHandler = (token, email) => {
     setToken(token);
+    setEmail(email);
     localStorage.setItem("token", token);
   };
 
@@ -26,6 +28,7 @@ function App() {
     token: token,
     isLoggedIn: userIsLoggedIn,
     login: loginHandler,
+    userEmailId: email,
   };
 
   const submitHandler = async (detailRef) => {

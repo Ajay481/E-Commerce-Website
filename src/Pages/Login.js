@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { AuthContext } from "../store/cart-context";
 
 export const Login = () => {
-  const cartCtx = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
   const emailInputRef = useRef("");
   const passwordInputRef = useRef("");
   const history = useHistory();
@@ -39,7 +39,7 @@ export const Login = () => {
         }
       })
       .then((data) => {
-        cartCtx.login(data.idToken);
+        authCtx.login(data.idToken, data.email);
         history.replace("/store");
       })
       .catch((err) => {

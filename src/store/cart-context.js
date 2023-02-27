@@ -5,5 +5,8 @@ export const CartContext = React.createContext({
 });
 
 export const AuthContext = React.createContext({
-  contextValue: { token: "", isLoggedIn: false, login: (token) => {} }
+  token: "",
+  isLoggedIn: false,
+  login: (token) => {},
+  userEmailId: "",
 });

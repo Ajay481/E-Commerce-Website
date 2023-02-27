@@ -1,12 +1,17 @@
 import React, { useContext } from "react";
 import { Container, Card, Button } from "react-bootstrap";
-import { CartContext } from "../../store/cart-context";
+import { AuthContext, CartContext } from "../../store/cart-context";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
+import { getCartListService } from "../../services/apiService";
 
 export default function CardComponent(props) {
   const cartCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
+  const a = authCtx.userEmailId.replace("@", "");
+  const newEmailId = a.replace(".", "");
 
-  const cartHandler = (title, src, price) => {
+  const cartHandler = async (title, src, price) => {
     const newItem = {
       title,
       src,
@@ -14,19 +19,14 @@ export default function CardComponent(props) {
       quantity: 1,
     };
 
-    let isPresent = false;
+    await axios
+      .post(`${process.env.REACT_APP_BASE_URL}/cartItem?${newEmailId}`, newItem)
+      .then(async (data) => {
+        const cartData = await getCartListService(newEmailId);
+        console.log(data);
 
-    cartCtx.cartItem.map((item) => {
-      if (item.title === newItem.title) {
-        isPresent = true;
-        return newItem;
-      }
-      return item;
-    });
-
-    cartCtx.setCartItem(
-      isPresent ? [...cartCtx.cartItem] : [...cartCtx.cartItem, newItem]
-    );
+        cartCtx.setCartItem(cartData);
+      });
   };
   return (
     <Container className="mt-5">
