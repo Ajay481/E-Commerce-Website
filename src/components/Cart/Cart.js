@@ -31,6 +31,11 @@ export const Cart = () => {
     if (cartCtx.cartItem.length > 0) setCartQuantity(cartCtx?.cartItem?.length);
   }, [cartCtx]);
 
+  const removeCartHandler = (title) => {
+    const deleteHandler = cartCtx.cartItem.filter((item) => item.title !== title)
+    cartCtx.setCartItem(deleteHandler)
+  }
+
   const handleShow = async () => {
     setShow(true);
   };
@@ -71,7 +76,7 @@ export const Cart = () => {
                 <td>{item.price}</td>
                 <td>
                   {item.quantity}
-                  <Button variant="danger">REMOVE</Button>
+                  <Button variant="danger" onClick={() => removeCartHandler(item.title)}>REMOVE</Button>
                 </td>
               </tr>
             ))}

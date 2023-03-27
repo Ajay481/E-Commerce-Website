@@ -2,7 +2,14 @@ import axios from "axios";
 
 export const getCartListService = async (newEmailId) => {
   const { data } = await axios.get(
-    `${process.env.REACT_APP_BASE_URL}/cartItem?${newEmailId}`
+    `https://react-ecommerce-14f24-default-rtdb.firebaseio.com/cartItem/${newEmailId}.json`
   );
-  return data;
+  const finalData = [];
+  const objKeys = Object.keys(data === null ? {} : data);
+  objKeys.forEach((keys) => {
+    const objElement = data[keys];
+    objElement.id = keys;
+    finalData.push(objElement);
+  });
+  return finalData;
 };
